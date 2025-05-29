@@ -1,0 +1,369 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  --light-main-bg: #fcfcfc;
+  --light-secondary-bg: #dfdfdf;
+  --accent: #ff9933;
+  --accent-dark: #926eff;
+  --shadow-below: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --shadow-above: rgba(0, 0, 0, 0.24) 0px -3px 8px;
+  --shadow-elevate: rgba(0, 0, 0, 0.24) 0px 8px 16px;
+
+}
+
+html:has(a[href^="#"]) {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--light-main-bg);
+}
+
+#navbar {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  width: 100vw;
+  background-color: var(--light-main-bg);
+  padding: 1rem clamp(2rem, 5vw, 4rem);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-below);
+}
+
+#links {
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  color: black;
+  transition: color 0.2s ease-out;
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+#landing {
+  position: relative;
+  background-color: var(--light-secondary-bg);
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 96vh;
+  padding: clamp(2rem, 4vw, 6rem) clamp(2rem, 6vw, 6rem);
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  box-shadow: var(--shadow-below);
+  z-index: 5;
+}
+
+#landing-text {
+  flex: 1 1 45%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#landing-text>h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+#landing-text>p {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  padding: 0 2rem;
+  text-align: center;
+  color: #555;
+}
+
+#landing-upload {
+  flex: 1 1 50%;
+  display: flex;
+  padding-top: 4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem
+}
+
+#upload-box {
+  flex-grow: 1 1 auto;
+  width: clamp(20rem, 28vw, 24rem);
+
+  background-color: var(--light-main-bg);
+  aspect-ratio: 1/1;
+
+  border-radius: 54px;
+  box-shadow: var(--shadow-elevate);
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#upload-box:hover {
+  border-radius: 36px;
+}
+
+#upload-box:hover>span {
+  font-size: 8.5rem;
+}
+
+#add-photo-icon {
+  font-size: 8rem;
+  color: var(--accent);
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+#preview-image {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  object-position: center;
+  display: none;
+  border-radius: 46px;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.75;
+  border: rgba(0, 0, 0, 0.5) solid 1px;
+}
+
+#upload-box:hover>#preview-image {
+  object-fit: cover;
+  object-position: center;
+  display: none;
+  border-radius: 28px;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.button-row>* {
+  flex-shrink: 1;
+}
+
+.button {
+  font-size: 18px;
+  background-color: var(--accent);
+  color: white;
+  padding: 1rem 2em;
+  border: none;
+  border-radius: 25px;
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+.button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.button:disabled {
+  background-color: #ccc;
+  color: #666;
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+  opacity: 0.5;
+}
+
+.error-text {
+  height: 1.2rem;
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+  visibility: hidden;
+}
+
+
+.reset {
+  width: fit-content;
+  background-color: var(--accent-dark);
+  padding: 0 1rem;
+}
+
+.reset:disabled {
+  background-color: #ccc;
+  color: #666;
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+  opacity: 0.5;
+}
+
+
+
+.results-section {
+  padding: 3rem 2rem;
+  background-color: #eee;
+  font-family: system-ui, sans-serif;
+  color: #111;
+  display: none;
+  scroll-margin-top: 6rem;
+}
+
+
+.results-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+
+.results-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+.knn-prediction {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.knn-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.predicted-label {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 3rem;
+  margin: 0;
+}
+
+
+.logreg-probs {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.logreg-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.prob-label {
+  font-size: 1.125rem;
+  margin: 0.25rem 0;
+}
+
+
+.graph-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.graph-container {
+  width: 100%;
+  height: clamp(300px, 60vw, 600px);
+}
+
+#about {
+  background-color: var(--light-main-bg);
+  box-shadow: var(--shadow-above);
+  min-height: 40vh;
+  padding: 4rem 2rem
+}
+
+.info-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+#info-grid {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  padding: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+.info-card {
+  max-width: 100%;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-below);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.info-icon {
+  font-size: 4rem;
+}
+
+.info-card>h1 {
+  font-size: 1.35rem;
+  letter-spacing: 0.025rem;
+}
+
+.info-card>p {
+  line-height: 1.6rem;
+  padding: 0 1rem;
+  text-align: center;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  #landing {
+    gap: 3rem;
+  }
+
+  .landing-info>* {
+    flex: 1 1 100%;
+  }
+
+  .info-title {
+    text-align: center;
+  }
+
+  #landing-text,
+  #landing-upload {
+    flex: 1 1 100%;
+  }
+
+  #landing-upload {
+    padding: 0;
+  }
+
+  #info-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatDog Classifier</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link href="/static/index.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav id="navbar">
+    <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" style="margin-top: 2px;">
+      <i class="fab fa-github fa-2x link"></i>
+    </a>
+    <div id="links">
+      <a href="#landing" class="link">CatDog AI</a>
+      <a href="#about" class="link">How It Works</a>
+    </div>
+  </nav>
+  <section id="landing">
+    <div id="landing-text">
+      <h1>CatDog AI</h1>
+      <p>
+        How dog-like is your dog? How cat-like is your cat? Upload an image to find out!
+      </p>
+    </div>
+    <div id="landing-upload">
+      <div id="upload-box">
+        <span id="add-photo-icon" class="material-symbols-outlined">
+          add_photo_alternate
+        </span>
+        <img id="preview-image" />
+        <input id="file-upload" type="file" accept="image/jpeg, image/png, image/webp" hidden />
+      </div>
+      <div class="button-row">
+        <button id="submit-button" class="button" disabled autocomplete="off">Classify</button>
+        <button id="reset-button" class="button reset" disabled autocomplete="off"><span class="material-symbols-outlined">
+            replay
+          </span></button>
+      </div>
+      <p id="upload-error" class="error-text">Error message placeholder</p>
+    </div>
+  </section>
+  <section id="results" class="results-section">
+  <h1 class="results-title">Results</h1>
+
+  <div class="results-info">
+    <div class="results-row">
+      <div class="knn-prediction">
+        <h2 class="knn-title">KNN (K = 11) Label:</h2>
+        <h1 id="prediction" class="predicted-label">Label</h1>
+      </div>
+
+      <div class="logreg-probs">
+        <h2 class="logreg-title">Logistic Regression Probabilities:</h2>
+        <p id="probs-cat" class="prob-label">Cat: --%</p>
+        <p id="probs-dog" class="prob-label">Dog: --%</p>
+      </div>
+    </div>
+
+    <h3 class="graph-title">KNN (K = 3) Decision Boundary with 2 Principal Components:</h3>
+    <div id="plot-container" class="graph-container"></div>
+  </div>
+  <a id="results-link" href="#results" style="display: none;"></a>
+</section>
+  <section id="about">
+    <h1 class="info-title">How It Works</h1>
+    <div id="info-grid">
+      <div class="info-card">
+        <span class="material-symbols-outlined info-icon">
+          analytics
+        </span>
+        <h1>Specialized Data</h1>
+        <p>CatDog AI trains on numerous datasets with images capturing a wide variety of angles, positions, and lighting
+          conditions.</p>
+      </div>
+      <div class="info-card">
+        <span class="material-symbols-outlined info-icon">
+          smart_toy
+        </span>
+        <h1>Feature Extraction</h1>
+        <p>Transfer learning leverages the pretrained ResNet-50 architecture to extract informative
+          feature embeddings.</p>
+      </div>
+      <div class="info-card">
+        <span class="material-symbols-outlined info-icon">
+          wb_incandescent
+        </span>
+        <h1>Model Predictions</h1>
+        <p>Lightweight classification models powered by KNN, PCA, and logistic regression generate quick and powerful
+          insights.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+  <script src="/static/index.js"></script>
+</body>
+
+</html>
