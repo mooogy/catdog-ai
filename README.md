@@ -41,6 +41,8 @@ All models and EDA are built in this **repo**:
 
 ### Option 1: Using Docker (**Recommended**)
 
+**Requires Docker Desktop to be installed on your machine**
+
 ```bash
 docker pull mooogy/catdog-ai
 docker run -p 8000:8000 mooogy/catdog-ai # launches at http://localhost:8000
