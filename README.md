@@ -39,12 +39,18 @@ All models and EDA are built in this **repo**:
 
 ## Installation
 
-### Option 2: Local Setup (Python + Make)
+### Option 1: Using Docker (**Recommended**)
+
+```bash
+docker pull mooogy/catdog-ai
+docker run -p 8000:8000 mooogy/catdog-ai # launches at http://localhost:8000
+```
+
+### Option 2: Local Setup using Python + Make
 
 ```bash
 git clone https://github.com/mooogy/catdog-classifier-app.git
 cd catdog-classifier-app
-make install
 make run  # launches at http://localhost:8000
 ```
 
