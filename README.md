@@ -49,8 +49,8 @@ docker run -p 8000:8000 mooogy/catdog-ai # launches at http://localhost:8000
 ### Option 2: Local Setup using Python + Make
 
 ```bash
-git clone https://github.com/mooogy/catdog-classifier-app.git
-cd catdog-classifier-app
+git clone https://github.com/mooogy/catdog-ai.git
+cd catdog-ai
 make run  # launches at http://localhost:8000
 ```
 
