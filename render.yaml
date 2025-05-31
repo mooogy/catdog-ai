@@ -1,6 +1,15 @@
 services:
   - type: web
-    name: catdog-classifier-docker
-    env: docker
-    dockerfilePath: ./Dockerfile
+    name: catdog-ai
+    env: python
+    region: oregon
     plan: free
+    buildCommand:
+      python -m venv venv
+      . venv/bin/activate
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: . venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: PORT
+        value: 10000
