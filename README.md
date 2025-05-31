@@ -41,7 +41,7 @@ All models and EDA are built in this **repo**:
 
 ### Option 1: Using Docker (**Recommended**)
 
-**Requires Docker Desktop to be installed on your machine**
+**Requires Docker to be installed on your machine**
 
 ```bash
 docker pull mooogy/catdog-ai
@@ -50,10 +50,24 @@ docker run -p 8000:8000 mooogy/catdog-ai # launches at http://localhost:8000
 
 ### Option 2: Local Setup using Python + Make
 
+**With Make**
+
 ```bash
 git clone https://github.com/mooogy/catdog-ai.git
 cd catdog-ai
 make run  # launches at http://localhost:8000
+```
+
+### **OR**
+
+**Without Make**
+```bash
+git clone https://github.com/mooogy/catdog-ai.git
+cd catdog-ai
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload  # launches at http://localhost:8000
 ```
 
 ---
@@ -68,6 +82,19 @@ make run  # launches at http://localhost:8000
 ---
 
 ## Tech Stack / Libraries Used
+
+### Technologies
+- **HTML, CSS, Javascript** - Frontend UI/UX, responsive layout, file upload preview
+- **Python** – Backend and machine learning
+- **Docker** – Cross-platform deployment
+- **Makefile** - Easy virtual environment setup and development
+
+### Libraries
+- **Torch** (Torch, TorchVision) - Used for loading the pretrained ResNet model and extracting image embeddings
+- **Scikit-learn** - Handles PCA dimensionality reduction, classification models (KNN, Logistic Regression)
+- **FastAPI** – Backend API for handling image uploads and returning model predictions
+- **Pillow** - Processes and resizes uploaded images
+- **Plotly** - Generates decision boundary graph for the frontend
 
 ---
 
