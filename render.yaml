@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: catdog-classifier-docker
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free

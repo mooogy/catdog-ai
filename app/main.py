@@ -6,6 +6,14 @@ from app.model import plot_from_image, label_from_image, probs_from_image
 from PIL import Image,  UnidentifiedImageError, ImageFile
 from io import BytesIO
 import os
+import warnings
+
+warnings.filterwarnings(
+    "ignore",
+    message="X does not have valid feature names.*",
+    category=UserWarning,
+    module="sklearn.base"
+)
 
 app = FastAPI()
 ImageFile.LOAD_TRUNCATED_IMAGES = True
